@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "tinacms dev -c \"astro dev\"",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -12,6 +12,16 @@
     "@astrojs/mdx": "^4.2.3",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.0",
-    "astro": "^5.6.1"
+    "@popperjs/core": "^2.11.8",
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/bootstrap": "^5.2.10",
+    "astro": "^5.6.1",
+    "astro-bootstrap": "^0.7.0",
+    "bootstrap": "^5.3.5",
+    "tailwindcss": "^4.1.4",
+    "tinacms": "^2.7.5"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^1.9.5"
   }
 }

@@ -1,0 +1,131 @@
+<!-- ======================  H E A D E R  ====================== -->
+<header class="promo-header">
+  <!-- headline -->
+  <h1 class="promo-headline">
+    This "Diabetic Parasite" is causing deadly glucose spikes in millions of
+    Americans! (See the #1 way to fight it now)
+  </h1>
+
+  <!-- hero / vídeo -->
+  <div class="promo-hero">
+    <!-- plano de fundo do header (vidros desfocados) -->
+    <img class="hero-bg" src="../light-background-fade.jpg" alt="" />
+    <!-- vídeo ou thumbnail -->
+    <div class="video-box">
+      <!-- Exemplo com <img>; se preferir use <video> ou <iframe> -->
+      <video
+        class="smartplayer-video smartplayer-video-current"
+        preload="metadata"
+        poster="https://images.converteai.net/878e8e96-9e3c-48f1-96d9-9d726cef585a/players/67864fb06e451dbbada28cc2/cover.jpg"
+        src="blob:https://glucosecontrolguide.com/798f0aa8-2878-4c71-a972-afeab8e32731"
+        autoplay="autoplay"></video>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* =====  RESET BÁSICO  ===== */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
+
+  /* =====  HEADER  ===== */
+  .promo-header {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    border-top: 4px solid #b85146; /* linha vermelha fininha */
+    overflow: hidden; /* esconde partes que ultrapassem */
+    text-align: center;
+  }
+
+  /* headline */
+  .promo-headline {
+    max-width: 1070px;
+    margin: 1.25rem auto 1.5rem;
+    padding: 0 1rem;
+    font-size: clamp(1.25rem, 2.4vw + 1rem, 2.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: #222;
+    font-size: 1.7rem;
+  }
+
+  /* hero (container) */
+  .promo-hero {
+    position: relative;
+    width: 100%;
+    min-height: 592px;
+  }
+
+  /* imagem de fundo (copos desfocados) */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 356%;
+    object-position: center;
+    z-index: 0;
+  }
+
+  /* gradiente branco no topo (para o fade) */
+  .promo-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    z-index: 1;
+  }
+
+  /* vídeo ou thumbnail centralizado */
+  .video-box {
+    position: relative;
+    width: 108%;
+    max-width: 1050px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .video-thumb,
+  .video-box video,
+  .video-box iframe {
+    width: 100%;
+    display: block;
+  }
+
+  /* overlay play + cursor */
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* overlay não captura clique */
+  }
+
+  .play-icon {
+    width: 45%;
+    max-width: 260px; /* ajuste conforme sua arte */
+  }
+</style>

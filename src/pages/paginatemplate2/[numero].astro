@@ -1,0 +1,78 @@
+---
+/* IMPORTES DE COMPONENTES */
+import BaseHead   from '../../components/BaseHead.astro';
+import Header     from '../../components/Header2.astro';
+import Footer     from '../../components/Footer2.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts'; 
+import { getPageContent2 } from '../../utils/content';
+import '../../styles/index2.css'
+
+
+export async function getStaticPaths() {
+  return Array.from({ length: 1000 }, (_, i) => ({
+    params: { numero: `${i + 1}` }
+  }));
+}
+
+const { numero } = Astro.params;
+
+const pageContent = await getPageContent2(numero);
+---
+
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title   ={pageContent.title ?? SITE_TITLE}
+      description={SITE_DESCRIPTION}
+    />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <div class="media">
+        <img src="/presellimage.gif" alt="Video placeholder" />
+      </div>
+
+      <div class="divButtonWatch">
+        <button>Click here to Watch The Video</button>
+      </div>
+
+      <div class="textInfo">
+        <p>
+          If you’re over 45, you might have noticed some changes in how you feel
+          as you age. For many men, the prostate naturally grows over
+          time—starting about the size of a walnut in your 20s and potentially
+          increasing as the years go by.
+        </p>
+
+        <p>
+          This can sometimes lead to discomfort, like that frequent “need to go”
+          feeling or occasional tiredness, which might affect your daily life.
+        </p>
+
+        <p>
+          Here’s the good news! Experts have explored a simple, 21-second
+          evening routine inspired by Japanese traditions that may help support
+          prostate comfort and overall wellness.
+        </p>
+
+        <p>
+          Even better? It’s something you can try at home using common, natural
+          ingredients you might already have on hand.
+        </p>
+
+        <p>
+          If you or someone you know is curious about gentle ways to care for
+          prostate health, click below to watch a short, free video featuring
+          Dr.&nbsp;Collins, who shares insights on this easy approach.
+        </p>
+      </div>
+
+      <div class="divButtonWatch">
+        <button>Click here to Watch The Video</button>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

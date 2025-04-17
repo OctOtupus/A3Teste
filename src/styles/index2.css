@@ -1,0 +1,29 @@
+.media img {
+  border-radius: 0px;
+  margin-bottom: 10px;
+}
+
+.divButtonWatch {
+  display: flex;
+  justify-content: center;
+}
+
+.divButtonWatch button {
+  display: inline-block;
+  background-color: #16a34a;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.375rem;
+  margin-bottom: 2rem;
+  font-size: 0.75em;
+}
+
+.divButtonWatch :hover {
+  background-color: #15803d; /* hover:bg-green-700 */
+}
+
+.textInfo{
+  font-size: 0.85em;
+}
