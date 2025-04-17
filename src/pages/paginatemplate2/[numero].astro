@@ -1,16 +1,15 @@
 ---
 /* IMPORTES DE COMPONENTES */
-import BaseHead   from '../../components/BaseHead.astro';
-import Header     from '../../components/Header2.astro';
-import Footer     from '../../components/Footer2.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts'; 
-import { getPageContent2 } from '../../utils/content';
-import '../../styles/index2.css'
-
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header2.astro";
+import Footer from "../../components/Footer2.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getPageContent2 } from "../../utils/content";
+import "../../styles/index2.css";
 
 export async function getStaticPaths() {
   return Array.from({ length: 1000 }, (_, i) => ({
-    params: { numero: `${i + 1}` }
+    params: { numero: `${i + 1}` },
   }));
 }
 
@@ -22,57 +21,194 @@ const pageContent = await getPageContent2(numero);
 <html lang="pt-BR">
   <head>
     <BaseHead
-      title   ={pageContent.title ?? SITE_TITLE}
+      title={pageContent.title ?? SITE_TITLE}
       description={SITE_DESCRIPTION}
     />
   </head>
 
   <body>
     <Header />
-    <main>
-      <div class="media">
-        <img src="/presellimage.gif" alt="Video placeholder" />
-      </div>
+    <span class="page-indicator" aria-label="Page number">
+      Page&nbsp;{numero}
+    </span>
+    <div class="template2">
+      <section class="refs">
+        <h2 class="refs-title">Scientific References:</h2>
 
-      <div class="divButtonWatch">
-        <button>Click here to Watch The Video</button>
-      </div>
+        <div class="refs-logos">
+          <img src="/refs.webp" alt="Scientific reference logos" />
+        </div>
 
-      <div class="textInfo">
-        <p>
-          If you’re over 45, you might have noticed some changes in how you feel
-          as you age. For many men, the prostate naturally grows over
-          time—starting about the size of a walnut in your 20s and potentially
-          increasing as the years go by.
-        </p>
+        <div class="refs-lists">
+          <ul>
+            <li>Vitamin&nbsp;D and type&nbsp;2 diabetes</li>
+            <li>Vitamin&nbsp;D and Diabetic Kidney Disease</li>
+            <li>Vitamins and type&nbsp;2 diabetes mellitus</li>
+            <li>
+              Appropriate and inappropriate vitamin supplementation in children
+            </li>
+            <li>
+              Beneficial role of vitamin&nbsp;K supplementation on insulin
+              sensitivity, glucose metabolism, and the reduced risk of
+              type&nbsp;2 diabetes: A review
+            </li>
+            <li>
+              Meta‑analysis: Vitamin&nbsp;D Therapy Reduced Type&nbsp;2 Diabetes
+            </li>
+            <li>
+              Citicoline and Vitamin&nbsp;B12 Eye Drops in Type&nbsp;1 Diabetes:
+              Results of a 36‑Month Pilot Study Evaluating Macular
+              Electrophysiological Changes
+            </li>
+            <li>
+              Vitamin&nbsp;C supplementation for diabetes management: A
+              comprehensive narrative review
+            </li>
+            <li>
+              Role of Vitamin&nbsp;C in Enhancing Fat Reduction and Metabolic
+              Health: Insights from Overweight Adults
+            </li>
+            <li>
+              Vitamin&nbsp;C and the management of diabetic foot ulcers: a
+              literature review
+            </li>
+            <li>
+              Summary for Patients: Vitamin&nbsp;D and Risk for Type&nbsp;2
+              Diabetes in People With Prediabetes
+            </li>
+            <li>
+              Acceptability, Safety, and Efficacy of Oral Administration of
+              Extracts of Black or Red Maca in Adults: A Randomized,
+              Double‑blind, Placebo‑controlled Study
+            </li>
+            <li>
+              Preventing Type&nbsp;2 Diabetes With Vitamin&nbsp;D: Therapy
+              Versus Supplementation
+            </li>
+          </ul>
 
-        <p>
-          This can sometimes lead to discomfort, like that frequent “need to go”
-          feeling or occasional tiredness, which might affect your daily life.
-        </p>
-
-        <p>
-          Here’s the good news! Experts have explored a simple, 21-second
-          evening routine inspired by Japanese traditions that may help support
-          prostate comfort and overall wellness.
-        </p>
-
-        <p>
-          Even better? It’s something you can try at home using common, natural
-          ingredients you might already have on hand.
-        </p>
-
-        <p>
-          If you or someone you know is curious about gentle ways to care for
-          prostate health, click below to watch a short, free video featuring
-          Dr.&nbsp;Collins, who shares insights on this easy approach.
-        </p>
-      </div>
-
-      <div class="divButtonWatch">
-        <button>Click here to Watch The Video</button>
-      </div>
-    </main>
+          <ul>
+            <li>
+              Vitamin&nbsp;D and Beta Cells in Type&nbsp;1 Diabetes: A
+              Systematic Review
+            </li>
+            <li>
+              Vitamin&nbsp;D and new insights into pathophysiology of
+              type&nbsp;2 diabetes
+            </li>
+            <li>Vitamin&nbsp;D and risk of type&nbsp;2 diabetes</li>
+            <li>Vitamin&nbsp;D and diabetes mellitus: an update 2013</li>
+            <li>
+              The Management of Diabetes Mellitus Using Medicinal Plants and
+              Vitamins
+            </li>
+            <li>
+              Oxidative stress, type&nbsp;2 diabetes and vitamin&nbsp;D: past,
+              present and future
+            </li>
+            <li>
+              Water Soluble Vitamins and their Role in Diabetes and its
+              Complications
+            </li>
+            <li>
+              Vitamin&nbsp;D and adrenal gland: Myth or reality? A systematic
+              review
+            </li>
+            <li>
+              Effects of B Vitamins on Metabolism and Weight Management in
+              Overweight Individuals: A Meta‑analysis Review
+            </li>
+            <li>
+              Pharmacokinetics and the Effect of Capsaicin in Capsicum
+              frutescens on Decreasing Plasma Glucose and Promoting Weight Loss
+            </li>
+            <li>
+              Effect of 2‑Month Controlled Green Tea Intervention on Lipoprotein
+              Cholesterol, Glucose, and Hormone Levels in Overweight
+              Postmenopausal Women
+            </li>
+            <li>Vitamin&nbsp;D and diabetes</li>
+            <li>Vitamin&nbsp;D effects and endocrine diseases</li>
+          </ul>
+        </div>
+      </section>
+    </div>
     <Footer />
   </body>
 </html>
+<style>
+  .template2 {
+    width: 100%;
+    max-width: calc(100% - 2em);
+  }
+  .refs {
+    max-width: 1068px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: center;
+    color: #4b4b4b;
+    font-size: 0.9rem;
+  }
+
+  .refs-title {
+    font-size: 1.1rem;
+    font-weight: 550;
+    margin-bottom: 2.5rem;
+    color: #999;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  /* imagem única, centralizada e responsiva */
+  .refs-logos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .refs-logos img {
+    width: 100%;
+    max-width: 1050px; /* ajuste conforme a largura da arte */
+    height: auto;
+    object-fit: contain;
+  }
+
+  .refs-lists {
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .refs-lists ul {
+    flex: 1 1 460px;
+    max-width: 560px;
+    list-style: disc inside;
+    line-height: 1.55;
+    padding-left: 0.5rem;
+    text-align: initial;
+    font-size: 11px;
+    color: #a3a39f;
+  }
+
+  .page-indicator {
+    position: fixed;
+    bottom: 12px;
+    right: 14px;
+    z-index: 9999; /* sempre por cima */
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.65rem; /* bem pequeno     */
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 3px 8px;
+    border-radius: 4px;
+    pointer-events: none; /* não interfere em cliques */
+  }
+
+  /* mobile: uma coluna só */
+  @media (max-width: 480px) {
+    .refs-lists {
+      gap: 2rem;
+    }
+  }
+</style>

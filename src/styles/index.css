@@ -27,3 +27,17 @@
 .textInfo{
   font-size: 0.85em;
 }
+
+.page-indicator {
+  position: fixed;
+  bottom: 12px;
+  right: 14px;
+  z-index: 9999; /* sempre por cima */
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.65rem; /* bem pequeno     */
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 3px 8px;
+  border-radius: 4px;
+  pointer-events: none; /* não interfere em cliques */
+}
