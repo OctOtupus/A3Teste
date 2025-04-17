@@ -3,15 +3,30 @@
     This "Diabetic Parasite" is causing deadly glucose spikes in millions of
     Americans! (See the #1 way to fight it now)
   </h1>
+
   <div class="promo-hero">
     <img class="hero-bg" src="../light-background-fade.jpg" alt="" />
+
     <div class="video-box">
       <video
-        class="smartplayer-video smartplayer-video-current"
+        id="promoVideo"
+        class="smartplayer-video"
         preload="metadata"
         poster="https://images.converteai.net/878e8e96-9e3c-48f1-96d9-9d726cef585a/players/67864fb06e451dbbada28cc2/cover.jpg"
-        src="blob:https://glucosecontrolguide.com/798f0aa8-2878-4c71-a972-afeab8e32731"
-        autoplay="autoplay"></video>
+        src="/video.mp4"
+        playsinline></video>
+
+      <button class="play-btn" aria-label="Play / Pause"></button>
+
+      <input
+        type="range"
+        id="progressBar"
+        class="progress-bar"
+        min="0"
+        max="100"
+        value="0"
+        step="0.1"
+      />
     </div>
   </div>
 </header>
@@ -24,43 +39,32 @@
     margin: 0;
     padding: 0;
   }
-
   body {
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 
   .promo-header {
     width: 100%;
     position: relative;
-    background: #ffffff;
-    border-top: 4px solid #b85146; 
+    background: #fff;
+    border-top: 4px solid #b85146;
     overflow: hidden;
     text-align: center;
   }
-
   .promo-headline {
     max-width: 1070px;
     margin: 1.25rem auto 0.5rem;
     padding: 0 1rem;
-    font-size: 2.7rem;
-    font-weight: bold;
+    font-size: 1.7rem;
+    font-weight: 700;
     line-height: 1.15;
     color: #222;
-    font-size: 1.7rem;
   }
-
   .promo-hero {
     position: relative;
     width: 100%;
     min-height: 592px;
   }
-
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -69,7 +73,6 @@
     object-position: center;
     z-index: 0;
   }
-
   .promo-hero::before {
     content: "";
     position: absolute;
@@ -77,11 +80,7 @@
     left: 0;
     right: 0;
     height: 160px;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(to bottom, #fff 0%, #fff0 100%);
     z-index: 1;
   }
 
@@ -91,26 +90,135 @@
     max-width: 1050px;
     margin: 0 auto;
     z-index: 2;
+    overflow: hidden;
   }
-
-  .video-thumb,
-  .video-box video,
-  .video-box iframe {
+  .video-box video {
     width: 100%;
     display: block;
+    cursor: pointer;
   }
 
-  .play-overlay {
+  .smartplayer-video {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+  }
+
+  .play-btn {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-  }
-
-  .play-icon {
+    margin: auto;
     width: 45%;
     max-width: 260px;
+    background: url("/icon.gif") center/contain no-repeat;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .play-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+  }
+
+  .progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #c23e82;
+  }
+  .progress-bar::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #c23e82;
+  }
+
+  .progress-bar::-webkit-slider-thumb,
+  .progress-bar::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+    border: none;
+    background: transparent;
   }
 </style>
+
+<script>
+  const video = document.getElementById(
+    "promoVideo"
+  ) as HTMLVideoElement | null;
+
+  const overlay = document.querySelector(
+    ".play-btn"
+  ) as HTMLButtonElement | null;
+
+  const bar = document.getElementById("progressBar") as HTMLInputElement | null;
+
+  if (!video || !overlay || !bar) {
+    throw new Error("Algum elemento do player não foi encontrado no DOM.");
+  }
+
+  /* -- restante do código só roda se todos existem -- */
+  const GIF_URL = "/icon.gif";
+  const IMG_URL = "/play-icon.png";
+
+  function togglePlay() {
+    if (!video || !overlay) return; // sai se não existirem
+
+    if (video.paused) {
+      video.play();
+      overlay.style.display = "none";
+    } else {
+      video.pause();
+      overlay.style.background = `url('${IMG_URL}') center/contain no-repeat`;
+      overlay.style.display = "block";
+    }
+  }
+
+  overlay.addEventListener("click", togglePlay);
+  video.addEventListener("click", togglePlay);
+
+  video.addEventListener("play", () => {
+    overlay.style.background = `url('${GIF_URL}') center/contain no-repeat`;
+  });
+
+  video.addEventListener("ended", () => {
+    overlay.style.background = `url('${IMG_URL}') center/contain no-repeat`;
+    overlay.style.display = "block";
+    bar.value = "0";
+  });
+
+  video.addEventListener("timeupdate", () => {
+    const percent = (video.currentTime / video.duration) * 100;
+    bar.value = percent.toString();
+    bar.style.background = `linear-gradient(to right,
+      #c23e82 0%,#c23e82 ${percent}%,
+      rgba(0,0,0,.6) ${percent}%,rgba(0,0,0,.6) 100%)`;
+  });
+
+  bar.addEventListener("input", () => {
+    const time = (+bar.value / 100) * video.duration;
+    video.currentTime = time;
+    bar.style.background = `linear-gradient(to right,
+      #c23e82 0%,#c23e82 ${bar.value}%,
+      rgba(0,0,0,.6) ${bar.value}%,rgba(0,0,0,.6) 100%)`;
+  });
+</script>
